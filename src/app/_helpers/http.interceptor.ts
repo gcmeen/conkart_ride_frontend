@@ -13,7 +13,7 @@ export class HttpRequestInterceptor implements HttpInterceptor {
     const currentUser = this.storageService.getUser();
 
     req = req.clone({
-      // withCredentials: true,
+      withCredentials: true,
       headers: req.headers.set('authorization', currentUser?.token)
     });
 
