@@ -1,0 +1,124 @@
+<div class="container">
+    @if(notificationList.length > 0 ){
+    @for (notification of notificationList; track notification) {
+    <div class="m-4">
+        <mat-card>
+            <mat-card-header>
+                <mat-card-title>{{notification.message}}</mat-card-title>
+                <mat-card-subtitle></mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-content>
+
+                <div class="row ml-4 mr-4 mt-4">
+                    <div class="col-sm-6">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <h4 class="mb-0">Full Name</h4>
+                            </div>
+                            <div class="col-sm-6 text-secondary">
+                                {{notification.sender.username}}
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <h4 class="mb-0">Email</h4>
+                            </div>
+                            <div class="col-sm-6 text-secondary">
+                                {{notification.sender.email}}
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <h4 class="mb-0">Mobile No.</h4>
+                            </div>
+                            <div class="col-sm-6 text-secondary">
+                                {{notification.sender.email}}
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <h4 class="mb-0">Ride Status</h4>
+                            </div>
+                            <div class="col-sm-6 text-secondary">
+                                {{notification?.ride?.status}}
+                            </div>
+                        </div>
+                        <hr>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <h4 class="mb-0">PickUp Loacation</h4>
+                            </div>
+                            <div class="col-sm-6 text-secondary">
+                                {{notification?.ride?.pickup_location}}
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <h4 class="mb-0">Drop Loacation</h4>
+                            </div>
+                            <div class="col-sm-6 text-secondary">
+                                {{notification?.ride?.drop_location}}
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <h4 class="mb-0">Total Fare</h4>
+                            </div>
+                            <div class="col-sm-6 text-secondary">
+                                {{notification?.ride?.fare}}
+                            </div>
+                        </div>
+                        <hr>
+                    </div>
+                </div>
+
+                <div class="">
+                    @if(notification?.ride?.status =='open'){
+                    <div class="row align-end">
+                        <div class="col-sm-12">
+                            <button class="btn btn-secondary"
+                                (click)="acceptRideRequest(notification?.ride?._id,notification.receiver,'accepted')">
+                                Accept
+                            </button>
+                        </div>
+                    </div>
+                    }
+
+                    @if(notification?.ride?.status =='accepted'){
+                    <div class="row align-end">
+                        <div class="col-sm-12">
+                        <button class="btn btn-secondary mr-1"
+                            (click)="acceptRideRequest(notification?.ride?._id,notification.receiver,'closed')">
+                            Close
+                        </button>
+                        <button class="btn btn-secondary ml-1">
+                            Get Direction
+                        </button>
+                        </div>
+                    </div>
+                    }
+                </div>
+            </mat-card-content>
+        </mat-card>
+    </div>
+    }
+    }
+    @else{
+    <div class="m-4">
+        <mat-card>
+            <mat-card-header>
+                <mat-card-title>You have not any new ride request.</mat-card-title>
+                <mat-card-subtitle></mat-card-subtitle>
+            </mat-card-header>
+
+        </mat-card>
+    </div>
+    }
+</div>
