@@ -51,12 +51,12 @@ export class AppComponent {
   logout(): void {
     this.authService.logout().subscribe({
       next: res => {
-        console.log(res);
+        console.log('logout response',res);
         this.storageService.clean();
         if (this.interval) {
           clearInterval(this.interval);
         }
-        this.router.navigate(['/login'])
+        this.router.navigateByUrl('/login')
       },
       error: err => {
         console.log(err);
