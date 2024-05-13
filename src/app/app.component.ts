@@ -52,11 +52,11 @@ export class AppComponent {
     this.authService.logout().subscribe({
       next: res => {
         console.log('logout response',res);
-        this.storageService.clean();
         if (this.interval) {
           clearInterval(this.interval);
         }
-        this.router.navigate(['login'])
+        this.router.navigate(['/login']);
+        this.storageService.clean();
       },
       error: err => {
         console.log(err);
