@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { User } from '../interfaces/user';
 
 
-const AUTH_API = 'http://localhost:8080/api/v1/auth/';
+const AUTH_API = 'https://conkart-ride-backend.onrender.com/api/v1/auth/';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })

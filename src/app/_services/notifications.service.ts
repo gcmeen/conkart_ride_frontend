@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
 
-const API_URL = 'http://localhost:8080/api/v1/notification/';
+const API_URL = 'https://conkart-ride-backend.onrender.com/api/v1/notification/';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
