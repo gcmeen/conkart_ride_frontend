@@ -9,7 +9,7 @@ import { RidesComponent } from './rides/rides.component';
 import { AuthGuard } from './_helpers/auth.guard';
 
 const routes: Routes = [
-  { path: 'home', component: HomeComponent,canActivate: [AuthGuard] },
+  { path: 'home', component: HomeComponent },
   { path: 'login', component: LoginComponent},
   { path: 'register', component: RegisterComponent },
   { path: 'profile', component: ProfileComponent,canActivate: [AuthGuard] },
