@@ -36,7 +36,7 @@ export class LoginComponent implements OnInit {
         window.location.replace('home')
       },
       error: err => {
-        this.errorMessage = err.error.message;
+        this.errorMessage = err?.error?.message;
         this.isLoginFailed = true;
       }
     });
