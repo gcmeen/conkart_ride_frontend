@@ -13,7 +13,7 @@ export class AuthGuard implements CanActivate {
     if (this.StorageService.isLoggedIn()) {
       return true; // Allow access if the user is authenticated
     } else {
-      // this.router.navigate(['/login']); // Redirect to login if not authenticated
+      this.router.navigateByUrl('/login'); // Redirect to login if not authenticated
       return false; // Prevent access to the route
     }
   }
