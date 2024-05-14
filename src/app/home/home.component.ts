@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { DashboardService } from '../_services/dashboard.service';
-import { EventBusService } from '../_shared/event-bus.service';
 import { Chart, registerables } from 'chart.js';
 Chart.register(...registerables);
 
@@ -15,7 +14,7 @@ export class HomeComponent implements OnInit {
   rideChart: any;
   earningChart:any;
 
-  constructor(private dashboardService: DashboardService, private eventBusService: EventBusService) { }
+  constructor(private dashboardService: DashboardService) { }
 
   ngOnInit(): void {
     this.getDashboardData();

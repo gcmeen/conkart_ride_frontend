@@ -3,7 +3,6 @@ import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { StorageService } from './_services/storage.service';
 import { AuthService } from './_services/auth.service';
-import { EventBusService } from './_shared/event-bus.service';
 import { NotificationsService } from './_services/notifications.service'
 
 
@@ -24,8 +23,6 @@ export class AppComponent {
 
   constructor(
     private storageService: StorageService,
-    private authService: AuthService,
-    private eventBusService: EventBusService,
     private router: Router,
     private notificationsService: NotificationsService
   ) {
@@ -42,10 +39,6 @@ export class AppComponent {
       this.interval = setInterval(() => { this.getNotifications() }, 5000)
     }
 
-  }
-
-  unsubscribeBusSub():void{
-    this.eventBusSub.unsubscribe()
   }
 
   logout(): void {
