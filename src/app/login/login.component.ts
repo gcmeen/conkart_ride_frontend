@@ -21,7 +21,7 @@ export class LoginComponent implements OnInit {
   constructor(private authService: AuthService, private storageService: StorageService,private router: Router,private eventBusService:EventBusService) { }
 
   ngOnInit(): void {
-    
+    this.storageService.clean();
   }
 
   onSubmit(): void {
