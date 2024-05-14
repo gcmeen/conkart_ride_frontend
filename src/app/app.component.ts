@@ -39,7 +39,7 @@ export class AppComponent {
       const user = this.storageService.getUser();
       this.username = user.username;
       this.getNotifications();
-      this.interval = setInterval(() => { this.getNotifications() }, 5000)
+      this.interval = setInterval(() => { this.getNotifications() }, 10000)
     }
 
   }
@@ -49,14 +49,12 @@ export class AppComponent {
   }
 
   logout(): void {
+    clearInterval(this.interval);
     this.authService.logout().subscribe({
       next: res => {
         console.log('logout response',res);
-        if (this.interval) {
-          clearInterval(this.interval);
-        }
-        this.router.navigate(['/login']);
         this.storageService.clean();
+        setTimeout(()=>{this.router.navigate(['/login']),1000})
       },
       error: err => {
         console.log(err);
