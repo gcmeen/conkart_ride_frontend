@@ -18,10 +18,25 @@ export class LoginComponent implements OnInit {
   isLoginFailed = false;
   errorMessage = '';
 
-  constructor(private authService: AuthService, private storageService: StorageService,private router: Router,private eventBusService:EventBusService) { }
+  constructor(private authService: AuthService, private storageService: StorageService, private router: Router, private eventBusService: EventBusService) { }
 
   ngOnInit(): void {
+    this.clearSession()
+  }
+
+  //session clear and logout not working from app component on server but working on local
+  //so have to move logout function here for working app on server to clear session from client and server
+
+  clearSession(): void {
     this.storageService.clean();
+    this.authService.logout().subscribe({
+      next: res => {
+        console.log('logout response', res);
+      },
+      error: err => {
+        console.log(err);
+      }
+    });
   }
 
   onSubmit(): void {

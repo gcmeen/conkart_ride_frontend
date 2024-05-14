@@ -31,9 +31,9 @@ export class ProfileComponent implements OnInit {
     }).subscribe({
       next: res => {
         console.log(res);
-        this.storageService.saveUser(res);
-        this.currentUser = res;
+        this.currentUser.status = res.status;
         this.userStatus = res.status;
+        this.storageService.saveUser(this.currentUser);
       },
       error: err => {
         console.log(err);
